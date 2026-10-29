@@ -2,7 +2,7 @@
 
 A cinematic, editorial one-page site for **Five Letter**, a film & brand studio. Built from scratch with plain HTML, CSS and JavaScript — no frameworks, no build step.
 
-Design direction inspired by bold, type-led studio sites: oversized condensed headlines, a near-black canvas, vermilion accent, film-still collage, mono labels and editorial spacing.
+Design direction inspired by bold, type-led studio sites: oversized condensed headlines, a near-black canvas, vermilion accent, film-still collage, mono labels and editorial spacing. Motion is layered on top with a small, self-hosted stack: **Lenis** smooth scrolling, **GSAP** and **ScrollTrigger**.
 
 ---
 
@@ -23,7 +23,11 @@ Open <http://localhost:8000>.
 fiveletter-site/
 ├── index.html          All page content and structure
 ├── styles.css          Design system, layout, responsive rules
-├── main.js             Menu, reveals, counters, lightbox, copy-to-clipboard
+├── main.js             Lenis + GSAP motion, menu, lightbox, copy-to-clipboard
+├── vendor/
+│   ├── lenis.min.js    Smooth scroll
+│   ├── gsap.min.js     Animation core
+│   └── ScrollTrigger.min.js  Scroll-linked timelines
 ├── assets/
 │   ├── founder.jpg     Osama Rahman portrait
 │   ├── work-*.jpg      Wonderland Foods film stills (from YouTube)
@@ -44,13 +48,17 @@ Then point `fiveletter.in` at the host and replace the current site.
 
 ## What's included
 
-- Sticky header with active-section nav and a full-screen mobile menu
-- Hero with film-still collage, oversized type and animated stats
-- Two scrolling marquees (accent + outline)
-- Studio statement, services, selected work (4 films), approach, process, founder, FAQ
+- Loader counter and curtain reveal
+- Sticky header with show/hide on scroll, active-section nav and a full-screen mobile menu
+- Pinned hero with pointer-parallax film-still collage, oversized type and animated stats
+- Scroll-velocity marquees (accent + outline)
+- Word-by-word studio statement reveal
+- Services with a sticky media panel that crossfades as rows activate
+- Selected work as a pinned horizontal film gallery with progress bar, edge fades and a closing panel
+- Sticky stacked "why" cards and a scroll-linked process rail
+- Founder portrait parallax, masked contact headline and a drifting footer wordmark
 - Video lightbox — plays the films via YouTube (no local video hosting needed)
 - Copy-email interaction with toast confirmation
-- Scroll reveals, count-up stats, hover film previews
 - Social sharing card, favicon, Organization schema
 - Responsive from 360px up, reduced-motion support, keyboard-accessible menu, FAQ, and lightbox
 
@@ -69,9 +77,11 @@ Everything lives in `index.html`; styling tokens live at the top of `styles.css`
 ## Notes
 
 - Work thumbnails are pulled from the studio's own YouTube films. If you add a film, export a 16:9 still or use `https://img.youtube.com/vi/<ID>/maxresdefault.jpg`.
-- The hero reuses those stills as a dark, blurred collage. Replace `hero-frame` images if you want different frames.
+- The hero reuses those stills as a dark, blurred collage. Replace the `collage-frame` images if you want different frames.
 - Fonts are loaded from Google Fonts (Anton, DM Sans, Fragment Mono). Self-host them if you need the site to work fully offline.
-- All motion is disabled automatically for visitors who prefer reduced motion.
+- Motion libraries are vendored in `vendor/` so the site has no external script dependencies. GSAP and ScrollTrigger are free to use under GSAP's standard license; Lenis is MIT.
+- Below 981px the horizontal work gallery becomes a native swipe strip and pinning/sticky stacking is disabled, so mobile scrolling stays natural.
+- All motion is disabled automatically for visitors who prefer reduced motion: content stays visible and the page behaves as a normal document.
 
 ---
 
