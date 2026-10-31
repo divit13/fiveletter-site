@@ -2,7 +2,7 @@
 
 A cinematic, editorial one-page site for **Five Letter**, a film & brand studio. Built from scratch with plain HTML, CSS and JavaScript — no frameworks, no build step.
 
-Design direction inspired by bold, type-led studio sites: oversized condensed headlines, a near-black canvas, vermilion accent, film-still collage, mono labels and editorial spacing. Motion is layered on top with a small, self-hosted stack: **Lenis** smooth scrolling, **GSAP** and **ScrollTrigger**.
+Design direction inspired by bold, type-led studio sites: oversized condensed headlines, a near-black canvas, film-still collage, mono labels and editorial spacing. The palette comes from the studio's own logo — pink `#e8205a`, green `#a2ca40`, teal `#09cece`, yellow `#f7ca0f` on ink — with the official logo lockup in the header, loader and footer. Motion is layered on top with a small, self-hosted stack: **Lenis** smooth scrolling, **GSAP** and **ScrollTrigger**.
 
 ---
 
@@ -29,6 +29,7 @@ fiveletter-site/
 │   ├── gsap.min.js     Animation core
 │   └── ScrollTrigger.min.js  Scroll-linked timelines
 ├── assets/
+│   ├── brand/          Official logo lockup + favicon/app icons
 │   ├── founder.jpg     Osama Rahman portrait
 │   ├── work-*.jpg      Wonderland Foods film stills (from YouTube)
 │   └── og.jpg          1200×630 social sharing card
@@ -66,7 +67,8 @@ Then point `fiveletter.in` at the host and replace the current site.
 
 Everything lives in `index.html`; styling tokens live at the top of `styles.css`.
 
-- **Colours / fonts** — `:root` in `styles.css` (`--ink`, `--cream`, `--accent`, font stacks)
+- **Colours / fonts** — `:root` in `styles.css` (`--ink`, `--cream`, `--accent`, `--brand-green`, `--brand-teal`, `--brand-yellow`, font stacks). The accent is the logo pink; keep the four brand colours in sync across the dot markers.
+- **Logo** — `assets/brand/logo-five-letter.png` (white `LETTER` version for dark backgrounds) is used in the header, loader and footer. `favicon-64.png` / `apple-touch-icon.png` use the 2×2 logo mark. Replace all of them together if the identity changes.
 - **Contact email** — appears in the header CTA anchor (`#contact`), contact section, FAQ and footer. Update all occurrences plus `main.js` (`copyBtn` fallback) and the schema block.
 - **Social links** — LinkedIn / Instagram URLs in the contact section and footer.
 - **Films** — each work card carries `data-video="YOUTUBE_ID"` and `data-title`. Swap the ID and the thumbnail in `assets/`.
